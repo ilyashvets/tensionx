@@ -4,11 +4,9 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.enableCors({
-    origin: false,
-  });
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
-  await app.listen(process.env.PORT || 8080);
+  await app.listen(5556);
 }
 bootstrap();

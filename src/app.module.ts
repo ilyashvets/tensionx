@@ -2,9 +2,14 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ContentModule } from './content/contetn.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import * as path from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: path.join(__dirname, '..', '..', 'tensionx-client', 'build'),
+    }),
     TypeOrmModule.forRoot({
       type: 'mysql',
       host: 'sql8.freesqldatabase.com',
